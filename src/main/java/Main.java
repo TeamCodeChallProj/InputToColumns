@@ -5,10 +5,11 @@ public class Main
     public static void main(String[] args)
     {
         Scanner input = new Scanner(System.in);
-        boolean sort = false;
-        int columns = 0;
-        sort = doYouWantToSort(input);
-        columns = howManyColumns(input);
+        boolean sort = doYouWantToSort(input);
+        int columns = howManyColumns(input);
+        String fileName = getFileName(input);
+
+        System.out.printf("sort: %s, columns: %s, fileName: %s",sort,columns,fileName);
 
     }
 
@@ -48,10 +49,24 @@ public class Main
             } catch (Exception e)
             {
                 System.out.println("Need to choose a number.");
+                input.next();
             }
 
         }while(!valid);
 
+        return user;
+    }
+
+    /**
+     * Asks the user for the filename they wish to read.
+     * @param input
+     * @return String
+     */
+    public static String getFileName(Scanner input)
+    {
+        String user = "";
+        System.out.println("Please type the file path, include the extension. If you want it to work that is.");
+        user = input.next();
         return user;
     }
 
