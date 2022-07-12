@@ -7,9 +7,8 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class InputRead {
-    public static List<String> readFile(){
+    public static Stream<String> readFile(){
         Stream<String> fileStream;
-        List<String> stringList = new ArrayList<>();
 
         try {
             fileStream = Files.lines(Paths.get(new File("").getAbsolutePath() + "/src/main/java/inputTest.txt"));
@@ -18,8 +17,6 @@ public class InputRead {
             return null;
         }
 
-        fileStream.forEach(stringList::add);
-
-        return stringList;
+        return fileStream;
     }
 }
