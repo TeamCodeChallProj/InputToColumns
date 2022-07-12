@@ -7,6 +7,6 @@ public class InputReadTest extends TestCase {
     }
 
     public void testReadFile() {
-        InputRead.readFile("").forEach(System.out::println);
+        InputRead.readFile("test").forEach(System.out::println);
     }
 }
