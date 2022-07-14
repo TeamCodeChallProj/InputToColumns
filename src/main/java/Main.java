@@ -1,3 +1,6 @@
+import utils.InputRead;
+import utils.StreamsToColumns;
+
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -45,8 +48,8 @@ public class Main
 		columns = optionalColumns.orElseGet(() -> howManyColumns(input));
 		fileName = optionalFileName.orElseGet(() -> getFileName(input));
 	
-			System.out.printf("sort: %s, columns: %s, fileName: %s",sorted,columns,fileName);
-		
+		//System.out.printf("sort: %s, columns: %s, fileName: %s",sorted,columns,fileName); For Debug Purposes
+		var test = StreamsToColumns.readStream(InputRead.readFile(fileName),3);
 	}
 	
 	/**
