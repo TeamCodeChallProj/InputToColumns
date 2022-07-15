@@ -1,6 +1,7 @@
 import utils.InputRead;
 import utils.StreamsToColumns;
 
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -49,7 +50,11 @@ public class Main
 		fileName = optionalFileName.orElseGet(() -> getFileName(input));
 	
 		//System.out.printf("sort: %s, columns: %s, fileName: %s",sorted,columns,fileName); For Debug Purposes
-		var test = StreamsToColumns.readStream(InputRead.readFile(fileName),3);
+		StreamsToColumns.PrintColumns(
+			StreamsToColumns.readStream(!sorted
+				? Objects.requireNonNull(InputRead.readFile(fileName))
+				: Objects.requireNonNull(InputRead.readFile(fileName)).sorted()
+				,columns));
 	}
 	
 	/**
