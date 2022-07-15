@@ -8,7 +8,7 @@ public class InputReadTest {
 
     @Test
     void setUp() throws Exception {
-        super.setUp();
+        super.getClass();
     }
 
     @Test
