@@ -50,6 +50,11 @@ public class Main
 		columns = optionalColumns.orElseGet(Main::howManyColumns);
 		fileName = optionalFileName.orElseGet(Main::getFileName);
 		
+		
+		if (columns > 5 || columns < 2) {
+			System.out.println("Columns must be a value between 2 or 5.");
+			return;
+		}
 		//System.out.printf("sort: %s, columns: %s, fileName: %s",sorted,columns,fileName); For Debug Purposes
 		StreamsToColumns.PrintColumns(StreamsToColumns.readStream(!sorted ? Objects.requireNonNull(InputRead.readFile(fileName)) : Objects.requireNonNull(InputRead.readFile(fileName)).sorted(), columns));
 	}
