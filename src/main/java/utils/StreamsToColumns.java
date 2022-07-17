@@ -15,18 +15,10 @@ public class StreamsToColumns
         ArrayList<ArrayList<String>> ret = new ArrayList<>();
         for(int i = 0; i < columns; i++)
         {
-            if(file.stream().skip(rows * i).count() % rows != 0)
-                ret.add(file.stream()
-                    .skip(rows * i)
-                    .limit(rows)
-                    .collect(Collectors.toCollection(ArrayList::new)));
-            else
-                ret.add(file.stream()
-                    .skip(rows * i)
-                    .limit(file.stream()
-                        .skip(rows * i)
-                        .count())
-                    .collect(Collectors.toCollection(ArrayList::new)));
+            ret.add(file.stream()
+                .skip(rows * i)
+                .limit(rows)
+                .collect(Collectors.toCollection(ArrayList::new)));
         }
         return ret;
     }
@@ -60,7 +52,7 @@ public class StreamsToColumns
         rows.forEach(row -> {
             for (int i = 0; i < stringBuilders.size(); i++)
             {
-                stringBuilders.get(i).append(rightPadding(row.size() != i ? row.get(i) : "", biggest.length(), ' ')).append("\t\t");
+                stringBuilders.get(i).append(rightPadding(row.size() > i ? row.get(i) : "", biggest.length(), ' ')).append("\t\t");
             }
         });
         
